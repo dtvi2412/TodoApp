@@ -338,6 +338,17 @@
   border: 1px solid red;
   box-shadow: 2px 2px red;
 }
+.today__listToDo__content > .today__listToDo__icons > .MuiSvgIcon-root {
+  transition: all 0.5s;
+}
+.fadeIcons {
+  opacity: 0.4;
+  pointer-events: none;
+  transform: scale(0.8) translateX(5px);
+}
+.checkIP {
+  margin-right: 10px;
+}
 
 @keyframes todayButton {
   from {

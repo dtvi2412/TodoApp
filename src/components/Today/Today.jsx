@@ -72,6 +72,7 @@ function Today({ changeBG }) {
         id: Date.now(),
         date: new Date().toLocaleDateString(),
         values: valueInput,
+        check: false,
       },
     ]);
 
@@ -137,7 +138,7 @@ function Today({ changeBG }) {
           return { ...item };
         }
       });
-      // console.log(find);
+
       setListTodo(find);
       setEdit(false);
     }
@@ -174,61 +175,34 @@ function Today({ changeBG }) {
     //Close Popup
     setDeletepopUp(false);
   };
+
+  const handleCheck = (id, e) => {
+    const checkIP = e.target.checked;
+    const cloneListToDo = [...listTodo];
+    if (checkIP) {
+      const clone = cloneListToDo.map((item) => {
+        if (item.id === id) {
+          return { ...item, check: true };
+        } else {
+          return { ...item };
+        }
+      });
+
+      setListTodo(clone);
+    } else if (!checkIP) {
+      const clone = cloneListToDo.map((item) => {
+        if (item.id === id) {
+          return { ...item, check: false };
+        } else {
+          return { ...item };
+        }
+      });
+
+      setListTodo(clone);
+    }
+  };
   return (
     <>
-      {edit && (
-        <div className="popupDelete">
-          <div className="popupDelte__content">
-            <div className="popupDelete__iconsClose">
-              <CloseIcon
-                onClick={() => {
-                  handleCloseEdit();
-                }}
-              />
-            </div>
-            <div className="popupDelete__detail">
-              <div className="popupDelete__iconsSmile">
-                {" "}
-                <InsertEmoticonIcon />
-              </div>
-
-              <h3 className="popupDelete__hello">Hello</h3>
-              <p className="popupDelete__textSureDelete">
-                Are you sure you want to edit?
-              </p>
-              <p style={{ color: "red" }}>{editID.values}</p>
-              <input
-                type="text"
-                className="popupInputEdit"
-                onChange={(e) => {
-                  onChangeEdit(e);
-                }}
-              />
-              <div className="popupDelte__button">
-                {inputEdit !== "" && (
-                  <button
-                    className="popupDelete__buttonOK buttonTg"
-                    onClick={() => {
-                      handleEditOk();
-                    }}
-                  >
-                    OK
-                  </button>
-                )}
-
-                <button
-                  className="popupDelete__buttonClose buttonTg"
-                  onClick={() => {
-                    handleCloseEdit();
-                  }}
-                >
-                  CLOSE
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
       <div className="today__hoursSet">
         {" "}
         <span
@@ -282,50 +256,6 @@ function Today({ changeBG }) {
                 >
                   <ClearAllIcon />
                 </div>
-                {/* Begin popup delete ALL */}
-                {deleteAll && (
-                  <div className="popupDelete">
-                    <div className="popupDelte__content">
-                      <div className="popupDelete__iconsClose">
-                        <CloseIcon
-                          onClick={() => {
-                            handleClosePopupDeleteAll();
-                          }}
-                        />
-                      </div>
-                      <div className="popupDelete__detail">
-                        <div className="popupDelete__iconsSmile">
-                          {" "}
-                          <InsertEmoticonIcon />
-                        </div>
-
-                        <h3 className="popupDelete__hello">Hello</h3>
-                        <p className="popupDelete__textSureDelete">
-                          Are you sure you want to delete all?
-                        </p>
-                        <div className="popupDelte__button">
-                          <button
-                            className="popupDelete__buttonOK buttonTg"
-                            onClick={() => {
-                              handleDeleteAllOk();
-                            }}
-                          >
-                            OK
-                          </button>
-                          <button
-                            className="popupDelete__buttonClose buttonTg"
-                            onClick={() => {
-                              handleDeleteAllClose();
-                            }}
-                          >
-                            CLOSE
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-                {/* End Popup Check Delete All */}
               </>
             )}
           </form>
@@ -336,17 +266,31 @@ function Today({ changeBG }) {
                   <div key={item.id} className="today__listToDo__content">
                     <div className="today__listToDo__text">
                       <span className="today__listToDo__values">
-                        {item.values}
+                        <input
+                          className="checkIP"
+                          type="checkbox"
+                          onClick={(e) => {
+                            handleCheck(item.id, e);
+                          }}
+                        />
+
+                        {item.check ? (
+                          <del style={{ color: "red" }}>{item.values}</del>
+                        ) : (
+                          item.values
+                        )}
                       </span>
                     </div>
                     <div className="today__listToDo__icons">
                       {" "}
                       <DeleteForeverIcon
+                        className={`${item.check ? "fadeIcons" : ""}`}
                         onClick={() => {
                           handleDeleteItem(item.id, item.values);
                         }}
                       />
                       <EditIcon
+                        className={`${item.check ? "fadeIcons " : ""}`}
                         onClick={() => {
                           handleEditItem(item.id, item.values);
                         }}
@@ -396,6 +340,105 @@ function Today({ changeBG }) {
                       </div>
                     )}
                     {/* End Popup Check Delete */}
+                    {/* Edit Popup */}
+                    {edit && (
+                      <div className="popupDelete">
+                        <div className="popupDelte__content">
+                          <div className="popupDelete__iconsClose">
+                            <CloseIcon
+                              onClick={() => {
+                                handleCloseEdit();
+                              }}
+                            />
+                          </div>
+                          <div className="popupDelete__detail">
+                            <div className="popupDelete__iconsSmile">
+                              {" "}
+                              <InsertEmoticonIcon />
+                            </div>
+
+                            <h3 className="popupDelete__hello">Hello</h3>
+                            <p className="popupDelete__textSureDelete">
+                              Are you sure you want to edit?
+                            </p>
+                            <p style={{ color: "red" }}>{editID.values}</p>
+                            <input
+                              type="text"
+                              className="popupInputEdit"
+                              onChange={(e) => {
+                                onChangeEdit(e);
+                              }}
+                            />
+                            <div className="popupDelte__button">
+                              {inputEdit !== "" && (
+                                <button
+                                  className="popupDelete__buttonOK buttonTg"
+                                  onClick={() => {
+                                    handleEditOk();
+                                  }}
+                                >
+                                  OK
+                                </button>
+                              )}
+
+                              <button
+                                className="popupDelete__buttonClose buttonTg"
+                                onClick={() => {
+                                  handleCloseEdit();
+                                }}
+                              >
+                                CLOSE
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {/* end Edit popup */}
+                    {/* Begin popup delete ALL */}
+                    {deleteAll && (
+                      <div className="popupDelete">
+                        <div className="popupDelte__content">
+                          <div className="popupDelete__iconsClose">
+                            <CloseIcon
+                              onClick={() => {
+                                handleClosePopupDeleteAll();
+                              }}
+                            />
+                          </div>
+                          <div className="popupDelete__detail">
+                            <div className="popupDelete__iconsSmile">
+                              {" "}
+                              <InsertEmoticonIcon />
+                            </div>
+
+                            <h3 className="popupDelete__hello">Hello</h3>
+                            <p className="popupDelete__textSureDelete">
+                              Are you sure you want to delete all?
+                            </p>
+                            <div className="popupDelte__button">
+                              <button
+                                className="popupDelete__buttonOK buttonTg"
+                                onClick={() => {
+                                  handleDeleteAllOk();
+                                }}
+                              >
+                                OK
+                              </button>
+                              <button
+                                className="popupDelete__buttonClose buttonTg"
+                                onClick={() => {
+                                  handleDeleteAllClose();
+                                }}
+                              >
+                                CLOSE
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {/* End Popup Check Delete All */}
                   </div>
                 ))}
               </React.Fragment>

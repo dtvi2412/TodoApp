@@ -7,8 +7,7 @@ import Nav from "./components/Nav/Nav";
 import { BrowserRouter } from "react-router-dom";
 import HomeIcon from "@material-ui/icons/Home";
 import AppsIcon from "@material-ui/icons/Apps";
-import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
-import AirplanemodeActiveIcon from "@material-ui/icons/AirplanemodeActive";
+
 import AndroidIcon from "@material-ui/icons/Android";
 function App() {
   const getBGLocalStorage = JSON.parse(localStorage.getItem("BACKGROUND"));
