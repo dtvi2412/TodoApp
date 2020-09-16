@@ -1,0 +1,590 @@
+/* popupDelete */
+.popupInputEdit {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  width: 70%;
+
+  background: gray;
+  border: none;
+  border-radius: 10px;
+
+  font-weight: bold;
+  color: white;
+  font-size: 18px;
+}
+.popupInputEdit:focus {
+  outline: none;
+  border: 1px solid #5bc0de;
+}
+.popupDelete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popupDelte__content {
+  width: 60vh;
+  /* height: 30vh; */
+
+  position: relative;
+
+  /* border-top: 5px solid #5bc0de; */
+  box-shadow: 2px 2px 5px black;
+  border-radius: 10px;
+  background: white;
+
+  animation: popUpEdit 0.2s linear 0s 1 normal;
+  overflow: hidden;
+}
+.popupDelte__content::before {
+  content: "";
+  width: 100%;
+  height: 10px;
+  background: #5bc0de;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  animation: borderTopContent 1s linear 0s 1 normal;
+}
+.popupDelete__iconsClose {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.popupDelete__iconsClose > .MuiSvgIcon-root {
+  color: gray;
+  cursor: pointer;
+  display: flex;
+  margin-left: auto;
+}
+.popupDelete__detail {
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.popupDelete__iconsSmile > .MuiSvgIcon-root {
+  color: #5bc0de;
+  font-size: 80px;
+  /* opacity: 0; */
+  animation: smileIcon 0.2s linear 0.3s 1 normal;
+}
+.popupDelete__hello {
+  color: black;
+  font-size: 30px;
+
+  animation: helloText 0.3s linear 0.3s 1 normal;
+}
+.popupDelete__textSureDelete {
+  color: black;
+  margin: 10px 0 10px 0;
+  animation: textSureDelete 0.5s linear 0.2s 1 normal;
+}
+.buttonTg {
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  margin-bottom: 30px;
+
+  border: none;
+  color: black;
+
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+
+  transition: 0.4s;
+  border-radius: 5px;
+}
+.buttonTg:hover {
+  background-color: #bdc3c7;
+}
+.popupDelete__buttonOK {
+  margin-right: 5px;
+  animation: buttonOK 0.4s linear 0.2s 1 normal;
+}
+.popupDelete__buttonClose {
+  animation: buttonClose 0.4s linear 0.2s 1 normal;
+}
+/* endpopupDelete */
+.deleteALL > .MuiSvgIcon-root {
+  cursor: pointer;
+  font-size: 40px;
+  text-align: center;
+  margin-left: 20px;
+  margin-top: 10px;
+
+  transition: all 0.5s;
+}
+.today {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 50px;
+}
+.today__time {
+  display: flex;
+  align-items: center;
+}
+.today__time h1 {
+  font-size: 41px;
+}
+.today__date {
+  font-size: 30px;
+  color: rgba(255, 0, 0, 0.7);
+  font-family: monospace;
+}
+.today__hoursSet {
+  display: flex;
+  justify-content: center;
+}
+.today__hours {
+  display: inline-block;
+
+  margin-top: 10px;
+  margin-bottom: 15px;
+
+  background: white;
+  color: black;
+  font-size: 18px;
+  font-family: cursive;
+  padding: 10px 22px;
+
+  border-radius: 10px;
+}
+.todayBoxBgWhite {
+  box-shadow: 1px 2px black;
+  border: 1px solid black;
+}
+.todayBoxBgBlack {
+  border: 1px solid red;
+  box-shadow: 1px 2px red;
+}
+.today__form {
+  display: flex;
+}
+.today__input {
+  height: 20px;
+
+  padding: 5px 20px;
+  margin-top: 15px;
+  margin-right: 0px;
+
+  border: none;
+
+  font-weight: bold;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 18px;
+  box-shadow: 2px 2px 5px white;
+}
+.today__input:focus {
+  border: none;
+  outline: none;
+}
+
+.today__button {
+  cursor: pointer;
+
+  background: black;
+  color: white;
+
+  text-align: center;
+  padding: 15px 20px;
+
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid white;
+  transition: all 0.5s;
+
+  animation-name: todayButton;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+}
+.today__listToDo {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.today__listToDo__content {
+  display: flex;
+}
+
+.today__listToDo__content > .today__listToDo__icons > .MuiSvgIcon-root {
+  cursor: pointer;
+  background: white;
+  color: black;
+
+  padding: 10px;
+  margin-left: 10px;
+  width: 30px;
+  height: 20px;
+
+  animation-name: icons;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+}
+
+.today__listToDo__text {
+  margin-bottom: 10px;
+  padding: 10px;
+
+  width: 300px;
+
+  /* height: 20px; */
+  height: auto;
+
+  background: white;
+  color: black;
+
+  box-shadow: -1px 4px 10px -6px white;
+
+  animation-name: text;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  overflow: hidden;
+}
+.today__listToDo__values {
+  text-align: left;
+  overflow: hidden;
+}
+
+/* bgWHITE */
+.today__inputWhite {
+  height: 20px;
+
+  padding: 5px 20px;
+  margin-top: 15px;
+  margin-right: 0px;
+
+  border: none;
+  box-shadow: 2px 2px 5px white;
+
+  font-weight: bold;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 18px;
+
+  /* color: black; */
+  /* background: #c1817d; */
+  background: #9ac5e3;
+  color: black;
+}
+.today__inputWhite:focus {
+  border: none;
+  outline: none;
+}
+.today__buttonWhite {
+  cursor: pointer;
+
+  background: #232c55;
+  color: white;
+
+  padding: 15px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  box-shadow: 2px 2px 5px black;
+  transition: all 0.5s;
+
+  animation-name: todayButton;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+}
+.today__buttonWhite:hover {
+  border-radius: 50%;
+  transform: translateX(-50px);
+}
+.today__buttonWhite:focus {
+  outline: none;
+  border: 1px solid yellowgreen;
+  box-shadow: 2px 2px yellowgreen;
+}
+.today__button:hover {
+  border-radius: 50%;
+  transform: translateX(-50px);
+}
+
+.today__button:hover + .deleteALL > .MuiSvgIcon-root {
+  transform: translateY(-500px);
+  color: red;
+  opacity: 0.3;
+}
+.today__buttonWhite:hover + .deleteALL > .MuiSvgIcon-root {
+  transform: translateY(-500px);
+  color: red;
+  opacity: 0.3;
+}
+.today__button:focus {
+  outline: none;
+  border: 1px solid red;
+  box-shadow: 2px 2px red;
+}
+
+@keyframes todayButton {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+@keyframes text {
+  from {
+    transform: translateY(-50px);
+    /* transform: translateX(-100px); */
+  }
+  to {
+    transform: translateY(0px);
+    /* transform: translateX(0px); */
+  }
+}
+@keyframes icons {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+@keyframes popUpEdit {
+  from {
+    transform: translateY(-200px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+@keyframes smileIcon {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes borderTopContent {
+  0% {
+    width: 0%;
+  }
+  25% {
+    width: 25%;
+  }
+  50% {
+    width: 50%;
+  }
+  75% {
+    width: 75%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes helloText {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes textSureDelete {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes buttonOK {
+  from {
+    transform: translateX(250px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+@keyframes buttonClose {
+  from {
+    transform: translateX(-250px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+/* Responsive */
+@media only screen and (max-width: 830px) {
+  .today__listToDo__text {
+    width: 220px;
+  }
+  .today__hours {
+    padding: 9px 20px;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .today__input {
+    color: white;
+    width: 50%;
+    background: rgba(255, 0, 0, 0.5);
+    font-size: 16px;
+  }
+  .today__time h1 {
+    font-size: 35px;
+  }
+  .today__inputWhite {
+    width: 50%;
+    font-size: 16px;
+    background: #e5844b;
+    color: black;
+
+    box-shadow: -1px 4px 20px -6px blue;
+  }
+  .today__buttonWhite {
+    box-shadow: -1px 4px 20px -6px blue;
+    background: #c1817d;
+  }
+  .today__listToDo__text {
+    box-shadow: -1px 4px 20px -6px red;
+    width: 200px;
+  }
+  .deleteALL > .MuiSvgIcon-root {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .popupInputEdit {
+    width: 50%;
+  }
+
+  .today__listToDo__text {
+    width: 150px;
+  }
+  .today__time h1 {
+    font-size: 25px;
+  }
+  .today__date {
+    font-size: 20px;
+  }
+}
+/* Mobile 430*/
+@media only screen and (max-width: 430px) {
+  .today__listToDo__text {
+    box-shadow: -1px 4px 20px -6px red;
+    width: 100px;
+  }
+}
+
+/* Galaxy Fold */
+@media only screen and (max-width: 415px) {
+  .popupDelete {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .popupDelte__content {
+    width: 40vh;
+  }
+  .popupDelete__iconsSmile > .MuiSvgIcon-root {
+    font-size: 40px;
+  }
+  .popupDelete__hello {
+    font-size: 16px;
+  }
+  .popupDelete__textSureDelete {
+    font-size: 12px;
+  }
+  .buttonTg {
+    padding: 5px 10px;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .today__listToDo__text {
+    box-shadow: -1px 4px 20px -6px red;
+    width: 80px;
+    font-size: 14px;
+  }
+  .today__listToDo__content > .today__listToDo__icons > .MuiSvgIcon-root {
+    width: 15px;
+    height: auto;
+  }
+  .today__time h1 {
+    font-size: 18px;
+  }
+  .today__date {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 321px) {
+  .today__listToDo__text {
+    font-size: 13px;
+    box-shadow: -1px 4px 20px -6px red;
+    width: 60px;
+    height: 10px;
+  }
+  .today__listToDo__content > .today__listToDo__icons > .MuiSvgIcon-root {
+    width: 10px;
+    height: 10px;
+    margin-left: 10px;
+  }
+  .today__input {
+    height: 15px;
+    padding: 3px 10px;
+  }
+}
+@media only screen and (max-width: 281px) {
+  .today__button {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  .today__buttonWhite {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  .today__button:hover {
+    transform: translateX(-30px);
+  }
+  .today__buttonWhite:hover {
+    transform: translateX(-30px);
+  }
+
+  .today__hours {
+    padding: 9px 10px;
+    font-size: 16px;
+  }
+  .today__listToDo__text {
+    font-size: 12px;
+    box-shadow: -1px 4px 20px -6px red;
+    width: 60px;
+  }
+  .today__listToDo__content > .today__listToDo__icons > .MuiSvgIcon-root {
+    width: 10px;
+    height: auto;
+    margin-left: 10px;
+  }
+}

@@ -1,38 +1,157 @@
+.dard-mode {
+  filter: invert(100%);
+}
 .App {
-  text-align: center;
+  display: grid;
+  place-items: center;
+
+  height: 100vh;
+  object-fit: contain;
+
+  background: #111;
+  color: #fff;
+}
+.AppBgChange {
+  display: grid;
+  place-items: center;
+
+  height: 100vh;
+  object-fit: contain;
+  /* #ffafbd → #ffc3a0 */
+  /* #F0F8FF */
+  background: #c0c8ff;
+}
+.pointChange {
+  margin: 10px auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: relative;
+  --webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.pointChange:hover {
+  cursor: pointer;
+}
+.pointChange:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+.pointChange:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.pointChange::after {
+  border-radius: 50%;
+  z-index: 20;
+  visibility: hidden;
+  opacity: 0;
+
+  content: "You want change color";
+  position: absolute;
+  bottom: -100px;
+  left: 10px;
+  padding: 10px 60px;
+  width: 100px;
+
+  background: white;
+  color: black;
+  text-align: left;
+  /* border-radius: 50%; */
+}
+.pointChange::before {
+  overflow: hidden;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+
+  clip-path: polygon(0 0, 0% 100%, 100% 100%);
+
+  content: " ";
+  position: absolute;
+  left: 10px;
+  bottom: -80px;
+
+  transform: rotate(210deg);
+
+  width: 50px;
+  height: 50px;
+
+  background: white;
+}
+.pointChangeWhite {
+  background: white;
+}
+.pointChangeBlack {
+  background: black;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* CLONE */
+.pointChange1 {
+  margin: 10px auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: relative;
+  --webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.pointChange1:hover {
+  cursor: pointer;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.pointChange1:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+.pointChange1:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.pointChange1::after {
   color: white;
-}
+  border-radius: 50%;
+  z-index: 20;
+  visibility: hidden;
+  opacity: 0;
 
-.App-link {
-  color: #61dafb;
-}
+  content: "You want change color";
+  position: absolute;
+  bottom: -100px;
+  left: 10px;
+  padding: 10px 60px;
+  width: 100px;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  background: black;
+  text-align: left;
+  /* border-radius: 50%; */
+}
+.pointChange1::before {
+  color: white;
+
+  overflow: hidden;
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+
+  clip-path: polygon(0 0, 0% 100%, 100% 100%);
+
+  content: " ";
+  position: absolute;
+  left: 10px;
+  bottom: -80px;
+
+  transform: rotate(210deg);
+
+  width: 50px;
+  height: 50px;
+
+  background: black;
+}
+@media only screen and (max-width: 800px) {
+  .pointChange {
+    margin-left: 20px;
   }
-  to {
-    transform: rotate(360deg);
+  .pointChange1 {
+    margin-left: 20px;
   }
 }
