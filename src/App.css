@@ -2,6 +2,7 @@
   filter: invert(100%);
 }
 .App {
+  transition: all 0.5s;
   display: grid;
   place-items: center;
 
@@ -12,6 +13,7 @@
   color: #fff;
 }
 .AppBgChange {
+  transition: all 0.5s;
   display: grid;
   place-items: center;
 
@@ -47,7 +49,7 @@
   visibility: hidden;
   opacity: 0;
 
-  content: "You want change color";
+  content: "You want to change the background";
   position: absolute;
   bottom: -100px;
   left: 10px;

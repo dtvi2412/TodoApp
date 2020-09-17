@@ -4,6 +4,7 @@ import ClearAllIcon from "@material-ui/icons/ClearAll";
 import EditIcon from "@material-ui/icons/Edit";
 import CloseIcon from "@material-ui/icons/Close";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
+import ImportExportIcon from "@material-ui/icons/ImportExport";
 import "./Today.css";
 function Today({ changeBG }) {
   //Update listTodo from local
@@ -83,7 +84,18 @@ function Today({ changeBG }) {
     fieldInput.value = "";
     // console.log("listTodo", listTodo);
   };
+  //handleClearText
+  const handleClearText = () => {
+    //Clear value input
 
+    const fieldInput = document.getElementById("inputToday");
+    if (fieldInput.value !== "") {
+      fieldInput.value = "";
+      setValueInput("");
+    } else {
+      alert("no message");
+    }
+  };
   const [deletepopUp, setDeletepopUp] = useState(false);
   const [checkDelete, setCheckDelete] = useState(false);
   const [checkId, setCheckId] = useState("");
@@ -201,6 +213,16 @@ function Today({ changeBG }) {
       setListTodo(clone);
     }
   };
+  const handleSelect = () => {
+    // const e = document.getElementById("selectSort");
+    // console.log(e.options[e.selectedIndex].value);
+
+    const cloneListToDo = [...listTodo];
+    cloneListToDo.reverse(function (a, b) {
+      return a - b;
+    });
+    setListTodo(cloneListToDo);
+  };
   return (
     <>
       <div className="today__hoursSet">
@@ -222,8 +244,31 @@ function Today({ changeBG }) {
               Today <span className="today__date">{dateTime}</span>{" "}
             </h1>
           </div>
+          <div className="today__sort">
+            {/* Clear Text  */}
+            {valueInput !== "" && (
+              <button
+                className="today__clearText"
+                onClick={() => {
+                  handleClearText();
+                }}
+              >
+                X
+              </button>
+            )}
+            {/* Sort */}
+            {listTodo.length > 1 && (
+              <div
+                className="today__sort__icons"
+                onClick={() => {
+                  handleSelect();
+                }}
+              >
+                <ImportExportIcon />
+              </div>
+            )}
+          </div>
           <form className="today__form">
-            {" "}
             <input
               id="inputToday"
               type="text"
@@ -232,6 +277,7 @@ function Today({ changeBG }) {
                 onChange(e);
               }}
             />
+
             {valueInput !== "" && (
               <button
                 type="submit"

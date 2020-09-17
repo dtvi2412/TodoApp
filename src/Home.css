@@ -48,17 +48,18 @@
   --filter: hue-rotate(1deg);
 }
 .point {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  /* border-radius: 50%; */
   background: var(--bgColor);
   /* filter: var(--filter); */
   transform: translateY(-10000px);
 
   margin-bottom: 50px;
 
-  animation: pointWAIT var(--animation-time) ease-in-out var(--animation-delay)
-    infinite normal;
+  animation: pointWAIT var(--animation-time) ease-in-out var(--animation-delay) infinite normal;
+
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
 @keyframes pointWAIT {
   from {
@@ -91,15 +92,7 @@
   background: yellow;
   margin-bottom: 50px;
   animation: pointWAIT3 3s ease-in-out 0s 1 normal;
-  clip-path: polygon(
-    0% 20%,
-    60% 20%,
-    60% 0%,
-    100% 50%,
-    60% 100%,
-    60% 80%,
-    0% 80%
-  );
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
 }
 .home__start {
   text-align: center;

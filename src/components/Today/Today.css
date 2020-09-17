@@ -17,6 +17,8 @@
   outline: none;
   border: 1px solid #5bc0de;
 }
+/* popup delete */
+
 .popupDelete {
   display: flex;
   justify-content: center;
@@ -31,6 +33,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+/* .popupDelete:active > .popupDelte__content {
+  transform: translate(-2px, -2px);
+} */
 
 .popupDelte__content {
   width: 60vh;
@@ -42,6 +47,8 @@
   box-shadow: 2px 2px 5px black;
   border-radius: 10px;
   background: white;
+
+  transition: transform 0.1s;
 
   animation: popUpEdit 0.2s linear 0s 1 normal;
   overflow: hidden;
@@ -328,11 +335,13 @@
   color: red;
   opacity: 0.3;
 }
+
 .today__buttonWhite:hover + .deleteALL > .MuiSvgIcon-root {
   transform: translateY(-500px);
   color: red;
   opacity: 0.3;
 }
+
 .today__button:focus {
   outline: none;
   border: 1px solid red;
@@ -349,7 +358,49 @@
 .checkIP {
   margin-right: 10px;
 }
+.today__clearText {
+  margin-right: 20px;
 
+  cursor: pointer;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px white;
+  transform: scale(1);
+}
+.today__clearText:hover {
+  box-shadow: 2px 2px 4px red;
+  transform: scale(1.4);
+  animation: iconSort 2s linear 0s infinite normal;
+}
+
+.today__sort {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+.today__sort__icons {
+  box-shadow: 2px 2px 5px white;
+  transform: scale(1);
+}
+.today__sort__icons:hover {
+  box-shadow: 2px 2px 5px red;
+  transform: scale(1.4);
+}
+.today__sort__icons:hover > .MuiSvgIcon-root {
+  animation: iconSort 2s linear 0s infinite normal;
+}
+.today__sort__icons > .MuiSvgIcon-root {
+}
+@keyframes iconSort {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 @keyframes todayButton {
   from {
     transform: translateX(-100px);
@@ -556,7 +607,10 @@
     font-size: 13px;
     box-shadow: -1px 4px 20px -6px red;
     width: 60px;
-    height: 10px;
+    /* height: 10px; */
+  }
+  .checkIP {
+    margin-right: 1px;
   }
   .today__listToDo__content > .today__listToDo__icons > .MuiSvgIcon-root {
     width: 10px;

@@ -140,6 +140,8 @@ function App() {
       const point = document.createElement("div");
       point.classList.add("point");
 
+      // point.style.animationDuration = random + "s";
+      // point.style.animationDelay = random + "s";
       point.style.setProperty("--animation-time", random + "s");
       point.style.setProperty("--animation-delay", random + "s");
 
@@ -181,7 +183,7 @@ function App() {
                 <EmojiEmotionsIcon />
               </div> */}
               <div className="homeContentStart__one">
-                {" "}
+                {/* <h1 className="home__start">&#10084;</h1> */}
                 <h1
                   id="start"
                   className="home__start"
