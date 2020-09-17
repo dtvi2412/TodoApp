@@ -133,3 +133,8 @@
     box-shadow: -2px 5px 16px -7px blue;
   }
 }
+@media only screen and (max-width: 281px) {
+  #text {
+    font-size: 12px;
+  }
+}

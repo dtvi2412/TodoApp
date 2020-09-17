@@ -22,6 +22,7 @@ function App() {
 
   const [listImg, setListImg] = useState("");
   const random = Math.floor(Math.random() * listImg.length);
+
   useEffect(() => {
     //Data
     const data = [
@@ -182,6 +183,7 @@ function App() {
               {/* <div className="home__icon">
                 <EmojiEmotionsIcon />
               </div> */}
+              <div id="text"></div>
               <div className="homeContentStart__one">
                 {/* <h1 className="home__start">&#10084;</h1> */}
                 <h1
