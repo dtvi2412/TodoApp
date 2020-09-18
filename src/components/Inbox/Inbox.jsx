@@ -1,7 +1,7 @@
 import React from "react";
 
 function Inbox() {
-  return <div>Inbox</div>;
+  return <div>A</div>;
 }
 
 export default Inbox;

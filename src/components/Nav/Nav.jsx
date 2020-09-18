@@ -38,7 +38,7 @@ function Nav({ changeBG }) {
       }, 100);
     };
     interVal();
-    console.log(2);
+    // console.log(2);
     return () => {
       clearInterval(interVal);
     };

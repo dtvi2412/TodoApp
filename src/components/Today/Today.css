@@ -393,6 +393,16 @@
 }
 .today__sort__icons > .MuiSvgIcon-root {
 }
+
+/* Zoom Time */
+#containerTime {
+  overflow: hidden;
+  cursor: pointer;
+}
+#timeText {
+  transform-origin: center center;
+  transition: all 0.5s;
+}
 @keyframes iconSort {
   from {
     transform: rotate(0deg);

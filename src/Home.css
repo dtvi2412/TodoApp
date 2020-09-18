@@ -100,8 +100,11 @@
   color: white;
   font-size: 30px;
   font-family: sans-serif;
+
   background: #a1ad00;
   border-radius: 10px;
+  box-shadow: 4px 4px 5px black;
+  border: 1px solid white;
 
   padding: 10px 20px;
   margin-bottom: 50px;
@@ -129,10 +132,13 @@
   font-family: sans-serif;
   background: #183756;
   border-radius: 10px;
+  border: 1px solid white;
 
   padding: 10px 20px;
   margin-bottom: 50px;
   overflow: hidden;
+
+  box-shadow: 4px 4px 5px black;
   /* animation: startButton 0.5s linear 0s 1 normal; */
 }
 .home__start1:hover > .MuiSvgIcon-root {

@@ -31,6 +31,14 @@ function Today({ changeBG }) {
       }
     };
     fetLocal();
+    //Clear  ZOOM HOUR
+    const containerTime = document.getElementById("containerTime");
+    const timeText = document.getElementById("timeText");
+
+    containerTime.addEventListener("mouseleave", () => {
+      timeText.style.transformOrigin = "center center";
+      timeText.style.transform = "scale(1)";
+    });
     return () => {
       fetLocal();
     };
@@ -223,16 +231,32 @@ function Today({ changeBG }) {
     });
     setListTodo(cloneListToDo);
   };
+  //Zoom Hour
+  const handleOnMouseMove = (e) => {
+    const timeText = document.getElementById("timeText");
+    const x = e.clientX - e.target.offsetLeft;
+    const y = e.clientY - e.target.offsetTop;
+
+    timeText.style.transformOrigin = `${x}px ${y}px`;
+    timeText.style.transform = "scale(1.5)";
+  };
   return (
     <>
       <div className="today__hoursSet">
         {" "}
         <span
+          id="containerTime"
+          onMouseMove={(e) => {
+            handleOnMouseMove(e);
+          }}
           className={`today__hours ${
             !changeBG ? "todayBoxBgWhite" : "todayBoxBgBlack"
           }`}
         >
-          {hourTime.toLocaleTimeString()}
+          <p id="timeText" className="today__textTime">
+            {" "}
+            {hourTime.toLocaleTimeString()}
+          </p>
         </span>
       </div>
       <div className="today">
@@ -312,12 +336,14 @@ function Today({ changeBG }) {
                   <div key={item.id} className="today__listToDo__content">
                     <div className="today__listToDo__text">
                       <span className="today__listToDo__values">
+                        {/* Check Del text */}
                         <input
                           className="checkIP"
                           type="checkbox"
                           onClick={(e) => {
                             handleCheck(item.id, e);
                           }}
+                          defaultChecked={`${item.check ? "checked" : ""}`}
                         />
 
                         {item.check ? (
