@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ClearAllIcon from "@material-ui/icons/ClearAll";
 import EditIcon from "@material-ui/icons/Edit";
@@ -39,10 +39,38 @@ function Today({ changeBG }) {
       timeText.style.transformOrigin = "center center";
       timeText.style.transform = "scale(1)";
     });
+
     return () => {
       fetLocal();
     };
   }, []);
+  useEffect(() => {
+    //Fire
+    // const app = document.getElementById("today");
+    // const fire = document.createElement("div");
+    // fire.style.width = 20 + "px";
+    // fire.style.height = 20 + "px";
+    // fire.style.borderRadius = "50%";
+    // fire.style.transition = "all .5s";
+    // fire.classList.add("fireAnimation");
+    // const random = Math.floor(Math.random() * 9);
+    // const x = Math.floor(Math.random() * 200);
+    // const y = Math.floor(Math.random() * 500);
+    // let index = 0;
+    // setInterval(() => {
+    //   index++;
+    //   if (index === 3) {
+    //     fire.style.transform = `translate(${x}px,${y}px)`;
+    //     fire.style.background = `rgba(255,255,0,0.${random})`;
+    //     fire.style.animation = "fire";
+    //   }
+    //   if (index > 3) {
+    //     fire.remove();
+    //     index = 0;
+    //   }
+    // }, 1000);
+    // app.appendChild(fire);
+  });
   //Set listTodo to localStorage
   useEffect(() => {
     //SET DATE
@@ -62,6 +90,9 @@ function Today({ changeBG }) {
     const hourNow = setInterval(() => {
       currentTime();
     }, 1000);
+
+    handleFilterSelect();
+
     return () => {
       clearInterval(hourNow);
     };
@@ -240,8 +271,26 @@ function Today({ changeBG }) {
     timeText.style.transformOrigin = `${x}px ${y}px`;
     timeText.style.transform = "scale(1.5)";
   };
+  //FILTER SELECT
+  const relSelect = useRef();
+  const [filterSelect, setFilterSelect] = useState([]);
+  //FILTER SELECT
+  const handleFilterSelect = () => {
+    const value = relSelect.current.value;
+    const cloneListTodo = [...listTodo];
+    if (value === "completed") {
+      const newList = cloneListTodo.filter((item) => item.check === true);
+      setFilterSelect(newList);
+      // console.log(newList);
+    } else if (value === "unCompleted") {
+      const newList = cloneListTodo.filter((item) => item.check === false);
+      setFilterSelect(newList);
+    } else if (value === "all") {
+      setFilterSelect(cloneListTodo);
+    }
+  };
   return (
-    <>
+    <div id="today">
       <div className="today__hoursSet">
         {" "}
         <span
@@ -291,6 +340,20 @@ function Today({ changeBG }) {
                 <ImportExportIcon />
               </div>
             )}
+            {/* Select */}
+            <div className="select">
+              <select
+                className="today__filter"
+                onClick={() => {
+                  handleFilterSelect();
+                }}
+                ref={relSelect}
+              >
+                <option value="all">All</option>
+                <option value="completed">Completed</option>
+                <option value="unCompleted">Uncompleted</option>
+              </select>
+            </div>
           </div>
           <form className="today__form">
             <input
@@ -332,7 +395,7 @@ function Today({ changeBG }) {
           <div className="today__listToDo">
             {listTodo?.length > 0 && (
               <React.Fragment>
-                {listTodo?.map((item) => (
+                {filterSelect?.map((item) => (
                   <div key={item.id} className="today__listToDo__content">
                     <div className="today__listToDo__text">
                       <span className="today__listToDo__values">
@@ -356,7 +419,7 @@ function Today({ changeBG }) {
                     <div className="today__listToDo__icons">
                       {" "}
                       <DeleteForeverIcon
-                        className={`${item.check ? "fadeIcons" : ""}`}
+                        className={` "fadeIcons"`}
                         onClick={() => {
                           handleDeleteItem(item.id, item.values);
                         }}
@@ -518,7 +581,7 @@ function Today({ changeBG }) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

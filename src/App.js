@@ -14,11 +14,10 @@ function App() {
 
   // console.log(getBGLocalStorage);
   const [changeBG, setChangeBG] = useState(getBGLocalStorage);
+  const [goApp, setGoApp] = useState(false);
   useEffect(() => {
     localStorage.setItem("BACKGROUND", JSON.stringify(changeBG));
-  }, [changeBG]);
-
-  const [goApp, setGoApp] = useState(false);
+  }, [changeBG, goApp]);
 
   const [listImg, setListImg] = useState("");
   const random = Math.floor(Math.random() * listImg.length);
@@ -71,6 +70,7 @@ function App() {
           "https://mcnewsmd1.keeng.net/tiin/archive/images/20200417/161059_0_black_panther.jpg",
       },
     ];
+
     setListImg(data);
   }, []);
   const handleGoApp = () => {
@@ -219,7 +219,7 @@ function App() {
       )}
 
       {goApp && (
-        <div className={`${changeBG ? "App" : "AppBgChange"}`}>
+        <div id="app" className={`${changeBG ? "App" : "AppBgChange"}`}>
           <div
             onClick={() => {
               setChangeBG(!changeBG);

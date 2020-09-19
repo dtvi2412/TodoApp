@@ -113,9 +113,26 @@
 
 .homeContentStart__one {
   animation: startButton1 0.5s linear 0s 1 normal;
+  transition: all linear 0.2s;
+}
+.homeContentStart__one:hover {
+  transform: scale(1.4);
+}
+
+.homeContentStart__one:hover ~ .homeContentStart__two {
+  transform: scale(0.8);
+  filter: blur(2px);
 }
 .homeContentStart__two {
   animation: startButton2 0.5s linear 0s 1 normal;
+  transition: all linear 0.2s;
+}
+.homeContentStart__two:hover {
+  transform: scale(1.4);
+}
+.homeContentStart__two:hover ~ .homeContentStart__one {
+  transform: scale(0.8);
+  filter: blur(2px);
 }
 .home__start:hover {
   animation: hoverButton 3s linear 0s infinite normal;

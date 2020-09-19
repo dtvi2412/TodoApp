@@ -8,9 +8,9 @@ function Nav({ changeBG }) {
     //Write Text
     const text = "Dear friend, i wish you all the best on this day!";
     let index = 0;
-    function writeText() {
-      const id = document.getElementById("text");
 
+    const id = document.getElementById("text");
+    function writeText() {
       const rd1 = Math.floor(Math.random() * 9);
       id.style.color = `#${rd1}f${rd1}f${rd1}e`;
       id.style.fontWeight = "bold";
@@ -21,31 +21,31 @@ function Nav({ changeBG }) {
       id.style.fontSize = 14 + "px";
       index++;
 
+      // clearTimeout(time);
+    }
+    const interVal = setInterval(() => {
+      writeText();
       if (index > text.length) {
         id.style.opacity = 0.5;
 
         id.innerText = "❤️";
         id.style.opacity = 0.2;
         id.style.visibility = "hidden";
-        return;
-      }
 
-      // clearTimeout(time);
-    }
-    const interVal = () => {
-      setInterval(() => {
-        writeText();
-      }, 100);
-    };
-    interVal();
+        clearInterval(interVal);
+      }
+    }, 100);
+    // interVal();
     // console.log(2);
     return () => {
       clearInterval(interVal);
     };
   }, []);
+
   return (
     <>
       <div id="text"></div>
+
       <div className={`nav ${changeBG ? "boxWhite" : "boxBlack"}`}>
         <div className="nav__content">
           <div className="nav__left">
